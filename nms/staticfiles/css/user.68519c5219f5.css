@@ -1,0 +1,150 @@
+/* General form container styles */
+.login-container, .register-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Titles */
+h1 {
+    text-align: center;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+input {
+    width: calc(100% - 20px); /* Adjust width for padding */
+    padding: 10px 15px; /* Reduce padding for a better fit */
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Input Focus */
+input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.2);
+}
+
+
+/* Button Styles */
+button.btn {
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    margin-top: 15px;
+}
+
+button.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Show Password Checkbox */
+.show-password {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.show-password input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Register Message */
+.register-message {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.register-message a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-message a:hover {
+    text-decoration: underline;
+}
+
+/* Password Strength Message Box */
+.password-message {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.password-message ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.password-message li {
+    padding-left: 15px;
+    line-height: 1.5;
+}
+
+.password-message .invalid {
+    color: red;
+}
+
+.password-message .valid {
+    color: green;
+}
+/* Show Password Checkbox */
+.show-password {
+    display: flex; /* Aligns children in a row */
+    align-items: center; /* Vertically centers the checkbox and label */
+    margin-top: 10px; /* Space above the checkbox */
+}
+
+.show-password input[type="checkbox"] {
+    width: 15px; /* Adjusts the size of the checkbox */
+    height: 15px; /* Adjusts the size of the checkbox */
+    margin-right: 5px; /* Space between checkbox and label */
+}
+
+.show-password label {
+    font-size: 14px; /* Adjusts font size for the label */
+    font-weight: bold;
+}
+/* Login Link Styles */
+.login-message {
+    text-align: center; /* Center the text */
+    margin-top: 20px; /* Space above the message */
+}
+
+.login-message a {
+    color: #007bff; /* Link color */
+    text-decoration: none; /* Removes the underline */
+    font-weight: bold; /* Makes the text bold */
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.login-message a:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: #0056b3; /* Darker blue on hover */
+}

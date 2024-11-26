@@ -1,0 +1,116 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/user.css' %}">
+    
+    <style>
+        .invalid {
+            color: red;
+        }
+        .valid {
+            color: green;
+        }
+        .password-message {
+            display: none;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title text-center">Register</h1>
+                        <form id="register-form" method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+
+                            <div id="password-message" class="password-message">
+                                <p>Password must contain:</p>
+                                <ul class="list-unstyled">
+                                    <li id="length" class="invalid">At least 8 characters</li>
+                                    <li id="uppercase" class="invalid">At least one uppercase letter</li>
+                                    <li id="number" class="invalid">At least one number</li>
+                                </ul>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100 mt-3">Register</button>
+                        </form>
+
+                        <p class="text-center mt-3 login-message">
+                            Already have an account? <a href="{% url 'login' %}">Login here</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const passwordInput = document.querySelector('input[type="password"]');
+        const passwordMessage = document.getElementById('password-message');
+        const lengthCheck = document.getElementById('length');
+        const uppercaseCheck = document.getElementById('uppercase');
+        const numberCheck = document.getElementById('number');
+        const registerForm = document.getElementById('register-form');
+
+        passwordInput.addEventListener('input', function() {
+            const password = passwordInput.value;
+
+            if (password.length >= 8) {
+                lengthCheck.classList.remove('invalid');
+                lengthCheck.classList.add('valid');
+            } else {
+                lengthCheck.classList.remove('valid');
+                lengthCheck.classList.add('invalid');
+            }
+
+            if (/[A-Z]/.test(password)) {
+                uppercaseCheck.classList.remove('invalid');
+                uppercaseCheck.classList.add('valid');
+            } else {
+                uppercaseCheck.classList.remove('valid');
+                uppercaseCheck.classList.add('invalid');
+            }
+
+            if (/\d/.test(password)) {
+                numberCheck.classList.remove('invalid');
+                numberCheck.classList.add('valid');
+            } else {
+                numberCheck.classList.remove('valid');
+                numberCheck.classList.add('invalid');
+            }
+
+            passwordMessage.style.display = 'block';
+        });
+
+        registerForm.addEventListener('submit', function(event) {
+            const password = passwordInput.value;
+            const isLengthValid = password.length >= 8;
+            const isUppercaseValid = /[A-Z]/.test(password);
+            const isNumberValid = /\d/.test(password);
+
+            if (!isLengthValid || !isUppercaseValid || !isNumberValid) {
+                event.preventDefault();
+                alert('User did not register. Please fill the form carefully.');
+            } else {
+                alert('Registration successful! Welcome!');
+            }
+        });
+    </script>
+</body>
+</html>
